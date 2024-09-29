@@ -12,7 +12,7 @@
         body, h1, h2, h3, h4, h5, h6, p, button {
             margin: 0;
             padding: 0;
-            font-family:  Fredoka , sans-serif; /* استخدام خط Fredoka */
+            font-family: 'Fredoka', sans-serif; /* استخدام خط Fredoka */
             font-weight: 400; /* تعيين الوزن إلى 400 */
             text-align: center;
         }
@@ -42,7 +42,7 @@
 
         /* إضافة الشريط اللامع في المنتصف */
         .progress-bar::before {
-            content:   ;
+            content: '';
             position: absolute;
             top: 50%;
             left: 5%;
@@ -94,7 +94,7 @@
             padding: 15px 25px; /* تقليل padding الجانبي */
             border-radius: 20px;
             border: 2px solid #E5E5E5;
-            font-family:  Arial , sans-serif;
+            font-family: 'Arial', sans-serif;
             direction: rtl;
             max-width: 400px; /* تحديد عرض أقصى للفقاعة */
             word-wrap: break-word; /* للسماح بتفكيك الكلمات الطويلة */
@@ -103,7 +103,7 @@
         }
 
         .chat-bubble::after {
-            content:   ;
+            content: '';
             position: absolute;
             top: -20px;
             left: 50%;
@@ -116,7 +116,7 @@
         }
 
         .chat-bubble::before {
-            content:   ;
+            content: '';
             position: absolute;
             top: -23px;
             left: 50%;
@@ -385,7 +385,7 @@ function loadQuestion() {
         <div>
             ${currentQuestion.options.map((option, index) => `
                 <button class="option-button" onclick="selectAnswer(this, ${index})">${option}</button>
-            `).join(  )}
+            `).join('')}
         </div>
     `;
     document.getElementById("checkButton").disabled = true;
