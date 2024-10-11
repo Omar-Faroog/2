@@ -142,7 +142,7 @@
     background-color: #fff;
     border-style: solid;
     border-width: 2px 2px 4px 2px; /* الحافة العلوية واليمنى واليسرى 2px، والحافة السفلية 4px */
-    border-color: #ccc; /* لون الحدود */
+    border-color: #E5E5E5; /* لون الحدود */
     padding: 15px;
     margin: 5px;
     cursor: pointer;
@@ -167,19 +167,35 @@
             border-color: #3F85A7;
         }
         .check-button-active {
-            background-color: #58CC02;
-            color: #fff;
-            border: 2px solid transparent;
-            border-bottom: 4px solid #58A700;
-            border-radius: 15px;
-            padding: 8px 180px;
-            position: fixed;
-            bottom: 5px; /* مكان الزر */
-            left: 48%;
-            transform: translateX(-50%);
-            outline: none; 
-            -webkit-tap-highlight-color: transparent; 
-        }
+    background-color: #58CC02;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 180px;
+    cursor: pointer;
+    font-size: 18px;
+    position: fixed; /* إبقاء الزر في وضع ثابت */
+    bottom: 5px; /* مكان الزر */
+    left: 48%; /* لتوسيط الزر */
+    transform: translateX(-50%); /* لتوسيع الزر بشكل أفقي */
+    box-shadow: 0 4px 0 #58A700; /* إضافة ظل */
+    transition: all 0.3s ease; /* تأثير الانتقال */
+    outline: none; /* إزالة تأثير التحديد */
+    -webkit-tap-highlight-color: transparent; /* إزالة تأثير التمييز في الهواتف المحمولة */
+}
+
+.check-button-active:active {
+    box-shadow: 0 0px 0 #79B933; /* تغيير الظل عند الضغط */
+    transform: translate(-50%, 4px); /* تحريك الزر 4px للأسفل */
+    outline: none; /* إزالة تأثير التحديد عند الضغط */
+}
+
+.check-button-active:focus, 
+.check-button-active:focus-visible {
+    outline: none; /* إزالة المربع عند التركيز */
+    box-shadow: none; /* إزالة أي تأثير ظل */
+    -webkit-box-shadow: none; /* إزالة أي تأثير ظل على متصفح كروم */
+}
         .check-button-disabled {
             background-color: #E5E5E5;
             color: #999;
@@ -195,36 +211,55 @@
 
         /* تعديل النافذة المنبثقة */
         #popup {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 500px;
-            background-color: #f9f9f9;
-            border-top: 1px solid #ccc;
-            padding: 15px;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        }
+    display: none; /* النافذة مخفية افتراضيًا */
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff; /* لون مريح للعين */
+    border-top-left-radius: 10px; /* منحنى للحافة العلوية اليسرى */
+    border-top-right-radius: 250px; /* منحنى للحافة العلوية اليمنى */
+    padding: 20px; /* زيادة الحشو */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* زيادة تأثير الظل */
+    font-family: Arial, sans-serif; /* اختيار خط مريح */
+    color: #333; /* لون النص */
+    border-top: 5px solid #E5E5E5; /* إضافة حافة علوية رمادية */
+    border-left: 4px solid #ccc; /* إضافة حافة جانبية يسارية رمادية */
+    border-right: 2px solid #ccc; /* إضافة حافة جانبية يمينية رمادية */
+    transition: all 0.3s ease; /* تأثير الانتقال */
+}
 
+/* عندما تضاف فئة .show ستصبح النافذة مرئية */
+#popup.show {
+    display: block; /* إظهار النافذة عند الحاجة */
+    transform: translateX(-50%) translateY(-10px); /* رفع النافذة قليلاً عند الفتح */
+    opacity: 1; /* جعل النافذة مرئية */
+}
         #nextButtonPopup {
-            background-color: #58CC02;
-            color: white;
-            border: 2px solid transparent;
-            border-radius: 15px;
-            padding: 8px 160px;
-            cursor: pointer;
-            margin-top: 20px;
-            position: relative; /* لإمكانية استخدام transform */
-            box-shadow: 0 4px 0 #58A700; /* إضافة الظل */
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* تأثير الحركة للزر والظل */
-        }
+    background-color: #58CC02;
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 8px 160px;
+    cursor: pointer;
+    margin-top: 20px;
+    position: relative; /* لإمكانية استخدام transform */
+    box-shadow: 0 4px 0 #58A700; /* إضافة الظل */
+    transition: transform 0.1s ease, box-shadow 0.1s ease; /* جعل الحركة أسرع */
+    outline: none; /* إزالة المربع الأزرق */
+    -webkit-tap-highlight-color: transparent; /* إزالة التأثير الأزرق عند اللمس */
+}
 
-        #nextButtonPopup:active {
-            transform: translateY(4px); /* النزول بالزر عند النقر */
-            box-shadow: 0 0px 0 #79B933; /* تقليل الظل عند النقر */
-        }
+#nextButtonPopup:focus {
+    outline: none; /* إزالة المربع الأزرق عند التركيز على الزر */
+}
+
+#nextButtonPopup:active {
+    transform: translateY(4px); /* النزول بالزر عند النقر */
+    box-shadow: 0 0px 0 #79B933; /* تقليل الظل عند النقر */
+}
         #completionMessage {
             display: none;
             margin-top: 50px;
@@ -366,15 +401,17 @@ const questions = [
 ];
 
 function nextQuestion() {
-    const popup = document.getElementById("popup");
-    popup.style.display = "none"; 
-    if (currentProgress < totalQuestions - 1) {
-        currentProgress++;
-        updateProgressBar();
-        loadQuestion();
-    } else {
-        showCompletionMessage();
-    }
+    setTimeout(function() { // تأخير لمدة 200 مللي ثانية قبل الانتقال
+        const popup = document.getElementById("popup");
+        popup.style.display = "none"; 
+        if (currentProgress < totalQuestions - 1) {
+            currentProgress++;
+            updateProgressBar();
+            loadQuestion();
+        } else {
+            showCompletionMessage();
+        }
+    }, 250); // 200 مللي ثانية تأخير
 }
 
 function loadQuestion() {
@@ -406,32 +443,34 @@ function selectAnswer(element, index) {
 }
 
 function checkAnswer() {
-    const selectedOption = document.querySelector(".option-button.selected");
-    const correctAnswerIndex = questions[currentProgress].correctIndex;
-    const popup = document.getElementById("popup");
-    const resultText = document.getElementById("resultText");
-    const errorMessage = document.getElementById("errorMessage");
+    setTimeout(function() { // تأخير لمدة 200 مللي ثانية قبل فحص الإجابة
+        const selectedOption = document.querySelector(".option-button.selected");
+        const correctAnswerIndex = questions[currentProgress].correctIndex;
+        const popup = document.getElementById("popup");
+        const resultText = document.getElementById("resultText");
+        const errorMessage = document.getElementById("errorMessage");
 
-    const correctSound = document.getElementById("correctSound");
-    const wrongSound = document.getElementById("wrongSound");
+        const correctSound = document.getElementById("correctSound");
+        const wrongSound = document.getElementById("wrongSound");
 
-    if (selectedOption) {
-        if (selectedOption.innerText === questions[currentProgress].options[correctAnswerIndex]) {
-            selectedOption.style.borderColor = "#A5EE6E";
-            resultText.textContent = "!إجابة صحيحة";
-            document.getElementById("nextButtonPopup").textContent = "المتابعة";
-            errorMessage.style.display = "none"; 
-            correctSound.play(); 
-        } else {
-            selectedOption.style.borderColor = "red";
-            errorMessage.textContent = "!الإجابة خاطئة";
-            resultText.textContent = " هي الإجابة الصحيحة: " + questions[currentProgress].options[correctAnswerIndex];
-            document.getElementById("nextButtonPopup").textContent = "فهمت";
-            errorMessage.style.display = "block"; 
-            wrongSound.play(); 
+        if (selectedOption) {
+            if (selectedOption.innerText === questions[currentProgress].options[correctAnswerIndex]) {
+                selectedOption.style.borderColor = "#A5EE6E";
+                resultText.textContent = "!إجابة صحيحة";
+                document.getElementById("nextButtonPopup").textContent = "المتابعة";
+                errorMessage.style.display = "none"; 
+                correctSound.play(); 
+            } else {
+                selectedOption.style.borderColor = "red";
+                errorMessage.textContent = "!الإجابة خاطئة";
+                resultText.textContent = " هي الإجابة الصحيحة: " + questions[currentProgress].options[correctAnswerIndex];
+                document.getElementById("nextButtonPopup").textContent = "فهمت";
+                errorMessage.style.display = "block"; 
+                wrongSound.play(); 
+            }
+            popup.style.display = "block";
         }
-        popup.style.display = "block";
-    }
+    }, 200); // 200 مللي ثانية تأخير
 }
 
 function updateProgressBar() {
@@ -440,19 +479,21 @@ function updateProgressBar() {
 }
 
 function showCompletionMessage() {
-    const completionSound = document.getElementById("completionSound");
-    completionSound.play(); // تشغيل الصوت عند انتهاء الاختبار
+    setTimeout(function() { // تأخير قبل عرض رسالة الإكمال
+        const completionSound = document.getElementById("completionSound");
+        completionSound.play(); // تشغيل الصوت عند انتهاء الاختبار
 
-    document.getElementById("completionMessage").style.display = "block";
-    document.getElementById("redirectButton").style.display = "block";
-    document.getElementById("nextButton").style.display = "none";
-    document.getElementById("checkButton").style.display = "none";
-    document.getElementById("questionContainer").style.display = "none";
-    document.getElementById("finalNote").style.display = "block"; 
+        document.getElementById("completionMessage").style.display = "block";
+        document.getElementById("redirectButton").style.display = "block";
+        document.getElementById("nextButton").style.display = "none";
+        document.getElementById("checkButton").style.display = "none";
+        document.getElementById("questionContainer").style.display = "none";
+        document.getElementById("finalNote").style.display = "block"; 
+    }, 200); // 200 مللي ثانية تأخير
 }
 
 function redirectToSite() {
-    window.location.href = "https://example.com"; 
+    window.location.href = "https://omar-faroog.github.io/Victory/"; 
 }
 
 loadQuestion(); 
